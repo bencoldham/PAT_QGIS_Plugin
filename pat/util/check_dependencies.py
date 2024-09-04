@@ -431,15 +431,6 @@ def check_python_dependencies(plugin_path, iface):
 
             settings_version = read_setting(PLUGIN_NAME + "/PAT_VERSION")
 
-            if settings_version is None:
-                LOGGER.info('Successfully installed and setup PAT {}'.format(meta_version))
-            else:
-                if parse_version(meta_version) > parse_version(settings_version):
-                    LOGGER.info('Successfully upgraded and setup PAT from {} to {})'.format(settings_version, meta_version))
-
-                elif parse_version(meta_version) < parse_version(settings_version):
-                    LOGGER.info('Successfully downgraded and setup PAT from {} to {})'.format(settings_version, meta_version))
-
             write_setting(PLUGIN_NAME + '/PAT_VERSION', meta_version)
 
             if os.path.exists(shortcutPath):
